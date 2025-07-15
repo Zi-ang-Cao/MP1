@@ -1,10 +1,11 @@
 # $\textsf{\color{orange}{M}\color{orange}{P}\textcolor{orange}{1}}$: $\textsf{\color{orange}{M}}\text{ean}$ Flow Tames $\textsf{\color{orange}{P}}\text{olicy}$ Learning in $\textsf{\color{orange}{1}}$-step for Robotic Manipulation
-<h4 align = "center">Juyi Sheng<sup>1 *</sup>, Ziyi Wang<sup>1 *</sup>, Peiming Li<sup>1</sup>, Mengyuan Liu<sup>1 </sup>
-<h4 align = "center"> <sup>1</sup>State Key Laboratory of General Artificial Intelligence,
+<h4 align = "center">Juyi Sheng<sup>*</sup>, Ziyi Wang<sup>*</sup>, Peiming Li, Mengyuan Liu<sup>† </sup>
+<h4 align = "center"> State Key Laboratory of General Artificial Intelligence,
 Peking University, Shenzhen Graduate School, Shenzhen, China</center></h4>
-<a href="https://mp1-2254.github.io/"><strong>Project Page</strong></a>
-|
-<a href="https://arxiv.org/"><strong>arXiv</strong></a>
+<h4 align = "center"> 
+  <a href="https://mp1-2254.github.io/"><strong>Project Page</strong></a>
+  |
+  <a href="https://arxiv.org/"><strong>arXiv</strong></a>
   
 ## Abstract
 In robot manipulation, robot learning is becoming a prevailing approach. However, generative models within this field
