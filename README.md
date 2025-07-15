@@ -1,11 +1,11 @@
-# MP1: Mean Flow Tames Policy Learning in 1-step for Robotic Manipulation
+# $\textsf{\color{orange}{M}\color{orange}{P}\textcolor{orange}{1}}$: $\textsf{\color{orange}{M}}\text{ean}$ Flow Tames $\textsf{\color{orange}{P}}\text{olicy}$ Learning in $\textsf{\color{orange}{1}}$-step for Robotic Manipulation
 
 ## Abstract
 
 In robot manipulation, robot learning is becoming a prevailing approach. However, generative models within this field
 face a fundamental trade-off between the slow, iterative sampling of diffusion models and the architectural constraints of
 faster Flow-based methods, which often rely on explicit consistency losses. To address these limitations, we introduce
-MP1, which pairs 3D point-cloud inputs with the MeanFlow paradigm to generate action trajectories in one network function evaluation (1-NFE). By directly learning the intervalaveraged velocity via the “MeanFlow Identity,” our policy avoids any additional consistency constraints. This formulation eliminates numerical ODE-solver errors during inference, yielding more precise trajectories. MP1 further incorporates CFG for improved trajectory controllability while retaining 1-NFE inference without reintroducing structural constraints. Because subtle scene-context variations are critical for robot learning, especially in few-shot learning, we introduce a lightweight Dispersive Loss that repels state embeddings during training, boosting generalization without slowing inference. We validate our method on the Adroit and Meta-World benchmarks, as well as in real-world scenarios. Experimental results show MP1 achieves superior average task success rates, outperforming DP3 by 10.2% and FlowPolicy by 7.3%. Its average inference time is only 6.8 ms—19× faster than DP3 and nearly 2× faster than FlowPolicy. Our code is available at https://mp1-2254.github.io/.
+MP1, which pairs 3D point-cloud inputs with the MeanFlow paradigm to generate action trajectories in one network function evaluation (1-NFE). By directly learning the interval-averaged velocity via the “MeanFlow Identity,” our policy avoids any additional consistency constraints. This formulation eliminates numerical ODE-solver errors during inference, yielding more precise trajectories. MP1 further incorporates CFG for improved trajectory controllability while retaining 1-NFE inference without reintroducing structural constraints. Because subtle scene-context variations are critical for robot learning, especially in few-shot learning, we introduce a lightweight Dispersive Loss that repels state embeddings during training, boosting generalization without slowing inference. We validate our method on the Adroit and Meta-World benchmarks, as well as in real-world scenarios. Experimental results show MP1 achieves superior average task success rates, outperforming DP3 by 10.2% and FlowPolicy by 7.3%. Its average inference time is only 6.8 ms—19× faster than DP3 and nearly 2× faster than FlowPolicy. Our code is available at https://mp1-2254.github.io/.
 
 ## Pipeline
 
@@ -13,8 +13,7 @@ MP1, which pairs 3D point-cloud inputs with the MeanFlow paradigm to generate ac
   <img src="framework.png" alt="MP1" width="100%">
 </div>
 
-The MP1 takes the historical observation point cloud and the robot's state as inputs. These inputs are processed through a visual encoder and a state encoder, respectively, and then serve as conditional inputs to the UNet-integrated MeanFlow. After passing through the MeanFlow, the model computes regression loss ($\mathcal{L}_{cfg}$) between the mean velocity generated from the initial noise and the target velocity. 
-This $\mathcal{L}_{cfg}$ is combined with a Dispersive Loss ($\mathcal{L}_{disp}$) imposed on the UNet’s hidden states to jointly optimize the network parameters.
+Overview of MP1. The MP1 takes the historical observation point cloud and the robot's state as inputs. These inputs are processed through a visual encoder and a state encoder, respectively, and then serve as conditional inputs to the UNet-integrated MeanFlow. After passing through the MeanFlow, the model computes regression loss ($L_{cfg}$) between the mean velocity generated from the initial noise and the target velocity. This $L_{cfg}$ is combined with a Dispersive Loss ($L_{disp}$) imposed on the UNet’s hidden states to jointly optimize the network parameters.
 
 # 💻 Installation
 
