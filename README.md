@@ -1,5 +1,11 @@
 # $\textsf{\color{orange}{M}\color{orange}{P}\textcolor{orange}{1}}$: $\textsf{\color{orange}{M}}\text{ean}$ Flow Tames $\textsf{\color{orange}{P}}\text{olicy}$ Learning in $\textsf{\color{orange}{1}}$-step for Robotic Manipulation
-
+<h4 align = "center">Juyi Sheng<sup>1 *</sup>, Ziyi Wang<sup>1 *</sup>, Peiming Li<sup>1</sup>, Mengyuan Liu<sup>1 </sup>
+<h4 align = "center"> <sup>1</sup>State Key Laboratory of General Artificial Intelligence,
+Peking University, Shenzhen Graduate School, Shenzhen, China</center></h4>
+<a href="https://mp1-2254.github.io/"><strong>Project Page</strong></a>
+|
+<a href="https://arxiv.org/"><strong>arXiv</strong></a>
+  
 ## Abstract
 In robot manipulation, robot learning is becoming a prevailing approach. However, generative models within this field
 face a fundamental trade-off between the slow, iterative sampling of diffusion models and the architectural constraints of
@@ -35,7 +41,7 @@ The results are logged by `swanlab or wandb`, so you need to `swanlab login` fir
     ```bash
     bash ./auto_run.bash 0 mp
     ```
-    This will train a MP/MP1 policy on the `drawer-close` task in Meta-World environment using point cloud modality.
+    This will train an MP/MP1 policy on the `drawer-close` task in Meta-World environment using point cloud modality.
 
 # 🤖 Real-world Deploy
 Coming soon ⏳ ...
