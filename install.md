@@ -66,8 +66,6 @@ git clone this repo and `cd` into it.
 
 8.install pytorch3d
 
-    conda install -y https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch3d/linux-64/pytorch3d-0.7.5-py38_cu117_pyt201.tar.bz2
-    or (like DP3)
     cd third_party/pytorch3d_simplified && pip install -e . && cd ..
 
 ---
