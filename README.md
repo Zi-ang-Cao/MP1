@@ -5,7 +5,7 @@ Peking University, Shenzhen Graduate School, Shenzhen, China</center></h4>
 <h4 align = "center"> 
   <a href="https://mp1-2254.github.io/"><strong>Project Page</strong></a>
   |
-  <a href="https://arxiv.org/"><strong>arXiv</strong></a>
+  <a href="https://arxiv.org/abs/2507.10543"><strong>arXiv</strong></a>
   
 ## Abstract
 In robot manipulation, robot learning is becoming a prevailing approach. However, generative models within this field
