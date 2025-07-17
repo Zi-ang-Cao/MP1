@@ -54,6 +54,19 @@ This repository is released under the MIT license.
 
 Our code is built upon [3D Diffusion Policy](https://github.com/YanjieZe/3D-Diffusion-Policy), [Flow Policy](https://github.com/zql-kk/FlowPolicy), [Mean Flow](https://github.com/haidog-yaqub/MeanFlow), [Mean Flow official](https://github.com/Gsunshine/meanflow), [VRL3](https://github.com/microsoft/VRL3), and [Metaworld](https://github.com/Farama-Foundation/Metaworld). We would like to thank the authors for their excellent works.
 
+# 👍 Citations
+```
+@article{sheng2025mp1meanflowtames,
+      title={MP1: Mean Flow Tames Policy Learning in 1-step for Robotic Manipulation}, 
+      author={Juyi Sheng and Ziyi Wang and Peiming Li and Mengyuan Liu},
+      year={2025},
+      eprint={2507.10543},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO},
+      url={https://arxiv.org/abs/2507.10543}, 
+}
+```
+
 
 
 
