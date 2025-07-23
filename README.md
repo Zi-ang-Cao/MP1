@@ -1,4 +1,4 @@
-# $\textsf{\color{orange}{M}\color{orange}{P}\textcolor{orange}{1}}$: $\textsf{\color{orange}{M}}\text{ean}$ Flow Tames $\textsf{\color{orange}{P}}\text{olicy}$ Learning in $\textsf{\color{orange}{1}}$-step for Robotic Manipulation
+# $\textsf{\color{orange}{M}\color{orange}{P}\textcolor{orange}{1}}$: $\textsf{\color{orange}{M}}\text{eanFlow}$ Tames $\textsf{\color{orange}{P}}\text{olicy}$ Learning in $\textsf{\color{orange}{1}}$-step for Robotic Manipulation
 <h4 align = "center">Juyi Sheng<sup>*</sup>, Ziyi Wang<sup>*</sup>, Peiming Li, Mengyuan Liu<sup>† </sup>
 <h4 align = "center"> State Key Laboratory of General Artificial Intelligence,
 Peking University, Shenzhen Graduate School, Shenzhen, China</center></h4>
