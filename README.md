@@ -40,7 +40,7 @@ The results are logged by `swanlab or wandb`, so you need to `swanlab login` fir
     This will train an MP/MP1 policy on the `drawer-close` task in Meta-World environment using point cloud modality.
 
 # 🤖 Real-world Deploy
-[R-MP1](https://github.com/LogSSim/R-MP1/tree/main#)
+[R-MP1](https://anonymous.4open.science/r/R-MP1-AAE2/README.md)
 
 # 🏷️ License
 This repository is released under the MIT license.
