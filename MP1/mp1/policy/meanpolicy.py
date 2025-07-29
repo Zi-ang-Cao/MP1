@@ -135,7 +135,10 @@ class Meanpolicy(BasePolicy):
         self.cfg_uncond='u'
         self.w = cfg_scale
         print_params(self)
-        
+                
+        self.t_start = 0.0
+        self.t_end = 1.0
+        self.kappa = None
 
 
     def predict_action(self, obs_dict: Dict[str, torch.Tensor]) -> Dict[str, torch.Tensor]:
@@ -287,8 +290,7 @@ class Meanpolicy(BasePolicy):
         z = (1 - t_) * x + t_ * e
         v = e - x
 
-        if self.w is not None:
-            # uncond = torch.ones_like(c) * self.num_classes
+        if self.w is not None and self.kappa is None:
             with torch.no_grad():
                 u_t = self.model(
                                 sample=z, 
@@ -296,6 +298,22 @@ class Meanpolicy(BasePolicy):
                                 global_cond=global_cond, 
                                 r=t)
             v_hat = self.w * v + (1 - self.w) * u_t
+        
+        elif self.w is not None and self.kappa > 0:
+            uncond = torch.ones_like(global_cond)
+            u_uncond = self.model(
+                                sample=z, 
+                                timestep=t, 
+                                global_cond=uncond, 
+                                r=t)
+            u_cond = self.model(
+                                sample=z, 
+                                timestep=t, 
+                                global_cond=global_cond, 
+                                r=t)
+
+            v_hat   = self.w * v + (1 - self.w - self.kappa) * u_uncond + self.kappa * u_cond 
+               
         else:
             v_hat = v
 
