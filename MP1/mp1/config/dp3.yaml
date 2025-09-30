@@ -124,8 +124,8 @@ logging:
   group: ${exp_name}
   id: null
   mode: online
-  name: ${training.seed}
-  project: dp3
+  name: ${exp_name}_${training.seed}
+  project: MP1_Benchmark
   resume: true
   tags:
   - dp3

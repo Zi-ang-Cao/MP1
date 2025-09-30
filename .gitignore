@@ -2,6 +2,8 @@ data/
 logs/
 log/
 
+save_videos/
+
 
 
 __pycache__/

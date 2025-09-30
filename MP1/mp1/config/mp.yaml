@@ -106,7 +106,7 @@ logging:
   id: null
   mode: online
   name: ${exp_name}_${training.seed}
-  project: mp
+  project: MP1_Benchmark
   resume: true
   tags:
   - mp

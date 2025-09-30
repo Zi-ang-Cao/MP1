@@ -145,8 +145,15 @@ class TrainMP1Workspace:
         if env_runner is not None:
             assert isinstance(env_runner, BaseRunner)
         
+        if cfg.logging.get('enable', True):
+            algorithm_name = str(cfg.logging.project)
+            original_run_name = str(cfg.logging.name)
+            cfg.logging.project = "MP1_Benchmark"
+            cfg.logging.name = f"{algorithm_name}_{original_run_name}"
+        
         cfg.logging.name = str(cfg.logging.name)
         cprint("-----------------------------", "yellow")
+        cprint(f"[WandB] project: {cfg.logging.project}", "yellow")
         cprint(f"[WandB] group: {cfg.logging.group}", "yellow")
         cprint(f"[WandB] name: {cfg.logging.name}", "yellow")
         cprint("-----------------------------", "yellow")
