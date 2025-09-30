@@ -25,7 +25,7 @@ You could generate demonstrations by yourself using our provided expert policies
 # 🛠️ Usage
 Scripts for generating demonstrations, training, and evaluation are all provided in the `scripts/` folder. 
 
-The results are logged by `swanlab or wandb`, so you need to `swanlab login` first to see the results.
+The results are logged by `wandb`, so you need to `wandb login` first to see the results.
 
 1. Generate demonstrations by `gen_demonstration_adroit.sh` and `gen_demonstration_metaworld.sh`. See the scripts for details. For example:
     ```bash

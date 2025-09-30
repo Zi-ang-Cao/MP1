@@ -16,7 +16,7 @@ use:
   $0 <GPU_ID> <CONFIG> [TASKS] [SEEDS]
 
 example:
-  $0 0 baseline metaworld_door-close 42
+  $0 0 baseline metaworld_drawer-close 42
 
   # explain:
   #   - run a task on GPU 0 
@@ -42,7 +42,9 @@ TASKS_DEFAULT=(
   # metaworld_button-press
   # metaworld_button-press-wall
   # metaworld_dial-turn
-  metaworld_door-close
+  # metaworld_door-close
+  metaworld_drawer-close
+
 )
 SEEDS_DEFAULT=(0 1 2)
 

@@ -8,6 +8,10 @@ import numpy as np
 from functools import cached_property
 from termcolor import cprint
 
+import mp1
+# Find the path of mp1        
+mp1_path = os.path.dirname(os.path.dirname(mp1.__file__))
+
 def check_chunks_compatible(chunks: tuple, shape: tuple):
     assert len(shape) == len(chunks)
     for c in chunks:
@@ -140,6 +144,9 @@ class ReplayBuffer:
         Open a on-disk zarr directly (for dataset larger than memory).
         Slower.
         """
+        # Assert the zarr_path is not an absolute path
+        assert not os.path.isabs(zarr_path), "zarr_path must be a relative path"
+        zarr_path = os.path.join(mp1_path, zarr_path)
         group = zarr.open(os.path.expanduser(zarr_path), mode)
         return cls.create_from_group(group, **kwargs)
     
@@ -221,6 +228,9 @@ class ReplayBuffer:
         if backend == 'numpy':
             print('backend argument is deprecated!')
             store = None
+        # Assert the zarr_path is not an absolute path
+        assert not os.path.isabs(zarr_path), "zarr_path must be a relative path"
+        zarr_path = os.path.join(mp1_path, zarr_path)
         group = zarr.open(os.path.expanduser(zarr_path), 'r')
         return cls.copy_from_store(src_store=group.store, store=store, 
             keys=keys, chunks=chunks, compressors=compressors, 
@@ -284,6 +294,9 @@ class ReplayBuffer:
             compressors: Union[str, numcodecs.abc.Codec, dict]=dict(), 
             if_exists='replace', 
             **kwargs):
+        # Assert the zarr_path is not an absolute path
+        assert not os.path.isabs(zarr_path), "zarr_path must be a relative path"
+        zarr_path = os.path.join(mp1_path, zarr_path)
         store = zarr.DirectoryStore(os.path.expanduser(zarr_path))
         return self.save_to_store(store, chunks=chunks, 
             compressors=compressors, if_exists=if_exists, **kwargs)

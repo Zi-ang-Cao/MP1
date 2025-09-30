@@ -36,6 +36,7 @@ fi
 
 cd MP1
 
+export wandb_switch=True
 
 export HYDRA_FULL_ERROR=1 
 export CUDA_VISIBLE_DEVICES=${gpu_id}
@@ -47,7 +48,8 @@ python train.py --config-name=${config_name}.yaml \
                             training.device="cuda:0" \
                             exp_name=${exp_name} \
                             logging.mode=${wandb_mode} \
-                            checkpoint.save_ckpt=${save_ckpt}
+                            checkpoint.save_ckpt=${save_ckpt} \
+                            +logging.enable=${wandb_switch}
 
 
 

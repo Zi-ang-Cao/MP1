@@ -1,3 +1,40 @@
+
+The following guidance works with 5090 GPU, cuda 12.8
+
+```Shell
+conda create -n MP1 python=3.10 -y
+
+conda activate MP1
+
+pip3 install torch==2.8.0 torchvision==0.23.0 \
+--index-url https://download.pytorch.org/whl/cu128
+
+cd MP1; 
+pip3 install -e .
+cd ../
+
+mamba install gym==0.21.0
+
+cd third_party
+cd mujoco-py-2.1.2.14
+pip install -e .
+cd ../..
+
+cd third_party
+cd Metaworld && pip install -e . && cd ..
+cd rrl-dependencies && pip install -e mj_envs/. && pip install -e mjrl/. && cd ..
+
+cd third_party/pytorch3d_simplified && pip install -e . && cd ..
+
+pip install zarr==2.12.0 wandb ipdb gpustat dm_control omegaconf hydra-core==1.2.0 dill==0.3.5.1 einops==0.4.1 diffusers==0.11.1 numba==0.56.4 moviepy imageio av matplotlib termcolor natsort open3d swanlab
+
+pip install --upgrade diffusers transformers huggingface_hub
+
+pip install -U  "huggingface-hub==0.25.2"
+```
+
+----------------------
+
 The following guidance works with 4090 GPU, cuda 11.8, driver 515.65.01.
 
 git clone this repo and `cd` into it.
@@ -72,7 +109,7 @@ git clone this repo and `cd` into it.
 
 9.other necessary packages
 
-    pip install zarr==2.12.0 wandb ipdb gpustat dm_control omegaconf hydra-core==1.2.0 dill==0.3.5.1 einops==0.4.1 diffusers==0.11.1 numba==0.56.4 moviepy imageio av matplotlib termcolor natsort open3d swanlab
+    pip install zarr==2.12.0 wandb ipdb gpustat dm_control omegaconf hydra-core==1.2.0 dill==0.3.5.1 einops==0.4.1 diffusers==0.11.1 numba==0.56.4 moviepy imageio av matplotlib termcolor natsort open3d
 
 ---
 

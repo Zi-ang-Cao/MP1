@@ -16,7 +16,7 @@ import pathlib
 from torch.utils.data import DataLoader
 import copy
 import random
-import swanlab
+import wandb
 import tqdm
 import numpy as np
 from termcolor import cprint
@@ -152,18 +152,25 @@ class TrainMP1Workspace:
         cprint("-----------------------------", "yellow")
         # print(f"Logging mode from config: {cfg.logging.mode}")  # 输出 cfg.logging.mode
         
-        cfg.logging.mode = 'cloud'
-        wandb_run = swanlab.init(
-            dir=str(self.output_dir),
-            model=cfg.logging.mode,
-            config=OmegaConf.to_container(cfg, resolve=True),
-            **cfg.logging
-        )
-        swanlab.config.update(
-            {
-                "output_dir": self.output_dir,
-            }
-        )
+        wandb_run = None
+        if cfg.logging.get('enable', True):
+            wandb_cfg = copy.deepcopy(cfg.logging)
+            if 'mode' in wandb_cfg and wandb_cfg.mode == 'cloud':
+                wandb_cfg.mode = 'online'
+
+            run_cfg = OmegaConf.to_container(wandb_cfg)
+            run_cfg.pop('enable', None)
+
+            wandb_run = wandb.init(
+                dir=str(self.output_dir),
+                config=OmegaConf.to_container(cfg, resolve=True),
+                **run_cfg
+            )
+            wandb.config.update(
+                {
+                    "output_dir": self.output_dir,
+                }
+            )
 
         # configure checkpoint
         topk_manager = TopKCheckpointManager(
@@ -241,7 +248,8 @@ class TrainMP1Workspace:
                     is_last_batch = (batch_idx == (len(train_dataloader)-1))
                     if not is_last_batch:
                         # log of last step is combined with validation and rollout
-                        wandb_run.log(step_log, step=self.global_step)
+                        if wandb_run:
+                            wandb_run.log(step_log, step=self.global_step)
                         self.global_step += 1
 
                     if (cfg.training.max_train_steps is not None) \
@@ -338,7 +346,8 @@ class TrainMP1Workspace:
 
             # end of epoch
             # log of last step is combined with validation and rollout
-            wandb_run.log(step_log, step=self.global_step)
+            if wandb_run:
+                wandb_run.log(step_log, step=self.global_step)
             self.global_step += 1
             self.epoch += 1
             del step_log
@@ -348,7 +357,9 @@ class TrainMP1Workspace:
         print("top 5 mean_scroes:", 100*sum(top5) / len(top5))
         last_data["top_5_mean_scroes"] = 100*sum(top5) / len(top5)
         
-        wandb_run.log(last_data, step=self.global_step)
+        if wandb_run:
+            wandb_run.log(last_data, step=self.global_step)
+            wandb_run.finish()
 
     def eval(self):
         # load the latest checkpoint
