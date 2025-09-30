@@ -64,6 +64,9 @@ class MetaworldRunner(BaseRunner):
         
         self.output_dir = 'save_videos'
 
+        self.reached_exit_success_threshold = False
+        self.exit_success_threshold = 99
+
     def run(self, policy: BasePolicy):
         device = policy.device
         dtype = policy.dtype
@@ -137,7 +140,7 @@ class MetaworldRunner(BaseRunner):
 
         videos = env.env.get_video()
         print(videos.shape)
-        if np.mean(all_success_rates)*100 >90 :
+        if np.mean(all_success_rates)*100 > self.exit_success_threshold:
             video_path = os.path.join(
                 self.output_dir,
                 f"{self.task_name}_eval.mp4"
@@ -149,8 +152,9 @@ class MetaworldRunner(BaseRunner):
                 cprint(f"Saved evaluation video → {video_path}", "cyan")
             else:
                 cprint("No video frames captured -- check wrapper settings.", "yellow")
-                
-            exit()
+            
+            print(f"Triggered early exit as success rate is greater than {self.exit_success_threshold}%")
+            self.reached_exit_success_threshold = True
 
         _ = env.reset()
         videos = None

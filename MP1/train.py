@@ -358,6 +358,9 @@ class TrainMP1Workspace:
             self.global_step += 1
             self.epoch += 1
             del step_log
+
+            if env_runner.reached_exit_success_threshold:
+                break
         
         last_data = dict()
         top5 = sorted(test_scores, reverse=True)[:5]
